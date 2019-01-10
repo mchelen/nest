@@ -33,6 +33,13 @@ export class CatsController {
     return this.catsService.findAll();
   }
 
+  @Get('async-sample')
+  async runMe(): Promise<any[]> {
+    return new Promise(resolve => {
+      setTimeout(resolve, 2000);
+    });
+  }
+
   @Get(':id')
   findOne(
     @Param('id', new ParseIntPipe())

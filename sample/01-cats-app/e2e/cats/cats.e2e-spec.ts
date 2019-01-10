@@ -29,6 +29,12 @@ describe('Cats', () => {
       });
   });
 
+  it(`/GET cats/async-sample`, async () => {
+    return request(app.getHttpServer())
+      .get('/cats/async-sample')
+      .expect(200);
+  });
+
   afterAll(async () => {
     await app.close();
   });
