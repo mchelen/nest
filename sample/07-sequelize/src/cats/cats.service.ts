@@ -1,11 +1,13 @@
 import { Injectable, Inject } from '@nestjs/common';
 import { CreateCatDto } from './dto/create-cat.dto';
 import { Cat } from './cat.entity';
+import { ConfigService } from '../config/config.service';
 
 @Injectable()
 export class CatsService {
   constructor(
     @Inject('CatsRepository') private readonly catsRepository: typeof Cat,
+    config: ConfigService,
   ) {}
 
   async create(createCatDto: CreateCatDto): Promise<Cat> {
